@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "PRESERVE — Keep what works.",
+  "description": "A visual workflow notebook for approved references, creative decisions, and recoverable iteration.",
+  "version": "0.6.0",
+  "permissions": ["sidePanel", "storage"],
+  "action": {
+    "default_title": "Open PRESERVE"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "minimum_chrome_version": "116",
+  "optional_host_permissions": [
+    "https://app.flora.ai/*",
+    "https://ik.imagekit.io/*",
+    "https://storage.googleapis.com/*",
+    "https://*.s3.amazonaws.com/*"
+  ]
+}

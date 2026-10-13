@@ -1,0 +1,80 @@
+.connected-canvas {
+  margin: 24px 0;
+  border-block: 1px solid var(--line);
+  padding: 14px 0;
+}
+.connected-canvas > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+.connected-canvas > summary span,
+.bridge-content h3 span {
+  font: 12px var(--sans);
+  color: var(--olive);
+}
+.bridge-content {
+  padding-block: 18px;
+  min-width: 0;
+}
+.bridge-content h3 {
+  font: 26px var(--serif);
+}
+.bridge-content h4 {
+  font: 21px var(--serif);
+  margin: 24px 0 12px;
+}
+.bridge-content fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.bridge-content label {
+  display: grid;
+  gap: 8px;
+  margin-block: 16px;
+}
+.bridge-content button {
+  margin: 6px 6px 6px 0;
+  min-height: 44px;
+}
+.bridge-content select,
+.bridge-content input,
+.bridge-content textarea {
+  width: 100%;
+  min-width: 0;
+}
+.bridge-content p,
+.bridge-content blockquote {
+  overflow-wrap: anywhere;
+  margin-block: 12px;
+}
+.bridge-content .preview {
+  max-height: 320px;
+  object-fit: contain;
+}
+.bridge-content pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 240px;
+  overflow: auto;
+  font-size: 12px;
+}
+.bridge-content .bridge-confirm {
+  display: flex;
+  align-items: flex-start;
+  font-size: 13px;
+}
+.bridge-confirm input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.handoff-preview {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+}

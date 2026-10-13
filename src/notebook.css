@@ -1,0 +1,485 @@
+/* Notebook-only editorial layers. Projects, Workflow and separate review pages
+   retain their existing tokens and layouts. */
+.notebook-view {
+  --nb-slate: #59666d;
+  --nb-blue: #526b7c;
+  --nb-sage: #4f6857;
+  --nb-sand: #7c693d;
+  --nb-rust: #955a43;
+  --nb-archive: #646a70;
+}
+.notebook-view main {
+  padding-top: 25px;
+}
+.notebook-view .notebook-toolbar {
+  margin-bottom: 28px;
+}
+.notebook-view .project-heading {
+  color: var(--nb-blue);
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.025em;
+  margin-bottom: 12px;
+}
+.notebook-view .chapter-heading {
+  margin-bottom: 24px;
+}
+.notebook-view .chapter-heading h1 {
+  font-size: clamp(30px, 4.5vw, 39px);
+  line-height: 1.13;
+  letter-spacing: -0.025em;
+}
+.notebook-view .stage-progress {
+  margin-top: 16px;
+}
+.notebook-view .chapter-index {
+  margin: 0 0 26px;
+  border-block: 1px solid #d3d9d9;
+}
+.notebook-view .chapter-index > summary {
+  color: var(--nb-blue);
+  padding: 12px 2px;
+  font-weight: 500;
+}
+.notebook-view .chapter-section {
+  --chapter-accent: var(--nb-blue);
+  --chapter-surface: #eef0f1;
+  background: var(--chapter-surface);
+  border: 0;
+  border-left: 2px solid
+    color-mix(in srgb, var(--chapter-accent) 45%, transparent);
+  border-radius: 0 6px 6px 0;
+  margin: 0 0 28px;
+  padding: 24px 22px 26px;
+  transition: border-color 180ms ease-out;
+}
+.notebook-view .chapter-section:hover {
+  border-left-color: var(--chapter-accent);
+}
+.notebook-view .reference-section {
+  --chapter-accent: var(--nb-sage);
+  --chapter-surface: #edf0e7;
+}
+.notebook-view #current-iteration {
+  --chapter-accent: var(--nb-blue);
+  --chapter-surface: #edf0f1;
+}
+.notebook-view #compare-reference {
+  --chapter-accent: var(--nb-sand);
+  --chapter-surface: #f2eddf;
+}
+.notebook-view #revision-direction {
+  --chapter-accent: var(--nb-rust);
+  --chapter-surface: #f3eae3;
+}
+.notebook-view #decision {
+  --chapter-accent: var(--nb-sage);
+  --chapter-surface: #edf0e8;
+}
+.notebook-view #iterations {
+  --chapter-accent: var(--nb-archive);
+  --chapter-surface: #eeede8;
+}
+.notebook-view .section-title {
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--chapter-accent) 19%, transparent);
+}
+.notebook-view .section-title h2 {
+  font: 26px/1.12 var(--serif);
+  letter-spacing: -0.015em;
+  min-width: 0;
+}
+.notebook-view .section-number::after {
+  content: none;
+}
+.notebook-view .revision-note li {
+  color: var(--nb-rust);
+}
+.notebook-view .section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 34px;
+  flex: 0 0 30px;
+  border-radius: 4px;
+  background: color-mix(
+    in srgb,
+    var(--chapter-accent) 10%,
+    var(--chapter-surface)
+  );
+  color: var(--chapter-accent);
+  font:
+    600 12px/1 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.notebook-view .section-count {
+  color: var(--nb-slate);
+  font:
+    12px/1.4 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+.notebook-view main button {
+  min-height: 44px;
+  padding: 11px 15px;
+  border-radius: 6px;
+  gap: 8px;
+  font-weight: 550;
+  transition:
+    background 180ms ease-out,
+    border-color 180ms ease-out,
+    color 180ms ease-out,
+    box-shadow 180ms ease-out,
+    transform 180ms ease-out;
+}
+.notebook-view
+  main
+  button:where(
+    :not(.primary):not(.text-button):not(.icon-button):not(.contact-select)
+  ) {
+  background: #fffefa80;
+  border-color: #c8cec9;
+}
+.notebook-view main button.primary {
+  background: var(--ink);
+  color: #fffefa;
+  border-color: var(--ink);
+  box-shadow: 0 1px 2px #20374a12;
+}
+.notebook-view #decision button.primary {
+  background: var(--nb-sage);
+  border-color: var(--nb-sage);
+}
+.notebook-view main button.secondary {
+  color: var(--nb-sand);
+  border-color: #bcb195;
+  background: #fffaf0;
+}
+.notebook-view main button.caution {
+  color: var(--nb-rust);
+  border-color: #cda996;
+  background: #fff9f4;
+}
+.notebook-view main .text-button,
+.notebook-view main a {
+  color: var(--nb-blue);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition:
+    color 180ms ease-out,
+    text-decoration-color 180ms ease-out;
+}
+.notebook-view main .text-button {
+  padding: 8px 0;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-weight: 500;
+}
+.notebook-view
+  main
+  :is(button, input, select, textarea, summary, a):focus-visible {
+  outline: 2px solid var(--nb-blue);
+  outline-offset: 3px;
+}
+.notebook-view main button:disabled {
+  background: #e2e3dc;
+  border-color: #d3d6cf;
+  color: #67716c;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.8;
+}
+.notebook-view main .text-button:disabled {
+  background: transparent;
+  border: 0;
+}
+.notebook-view main button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px #20374a1c;
+}
+.notebook-view main :is(input, textarea, select) {
+  border: 1px solid #bdc6c4;
+  border-radius: 5px;
+  background-color: #fffefa;
+  color: var(--ink);
+  padding: 12px;
+  transition:
+    border-color 180ms ease-out,
+    box-shadow 180ms ease-out;
+}
+.notebook-view main select {
+  min-height: 46px;
+  padding-right: 30px;
+}
+.notebook-view main :is(input, textarea)::placeholder {
+  color: #6e7678;
+}
+.notebook-view main :is(input, textarea, select):focus {
+  border-color: var(--nb-blue);
+  box-shadow: 0 0 0 3px #526b7c14;
+}
+.notebook-view main input[type="checkbox"] {
+  accent-color: var(--nb-sage);
+  padding: 0;
+}
+.notebook-view .helper,
+.notebook-view .section-intro,
+.notebook-view figcaption {
+  color: var(--nb-slate);
+}
+.notebook-view .chapter-section > .section-intro {
+  margin: -4px 0 18px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.notebook-view .disclosure {
+  border-color: color-mix(
+    in srgb,
+    var(--chapter-accent, #526b7c) 22%,
+    transparent
+  );
+}
+.notebook-view .disclosure > summary {
+  min-height: 46px;
+  color: var(--chapter-accent, var(--nb-blue));
+  font-weight: 550;
+  transition: background 180ms ease-out;
+}
+.notebook-view .detail-heading {
+  margin-bottom: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.notebook-view .detail-heading h3 {
+  font-size: 22px;
+}
+.notebook-view .inline-actions,
+.notebook-view .notebook-review-actions,
+.notebook-view .decision-actions {
+  gap: 10px;
+  margin-top: 18px;
+}
+.notebook-view .notebook-review-actions,
+.notebook-view .decision-actions {
+  padding-top: 16px;
+  border-top: 1px solid
+    color-mix(in srgb, var(--chapter-accent) 20%, transparent);
+}
+.notebook-view .chapter-section.next-section {
+  background: transparent;
+  border-left: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 22px 0 6px;
+}
+.notebook-view .new-iteration {
+  margin-top: 22px;
+  padding: 16px;
+  background: #e9edeb;
+  border: 1px solid #d2d9d4;
+  border-radius: 6px;
+}
+.notebook-view .new-iteration .disclosure {
+  border: 0;
+  margin: 0 0 8px;
+}
+.notebook-view .new-iteration .full {
+  margin-top: 8px;
+}
+.notebook-view .notebook-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid #cdd1cc;
+  border-radius: 4px;
+  color: #5b6368;
+  background: #e9eae5;
+  font:
+    500 11px/1.4 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+.notebook-view .notebook-status.tone-sage {
+  color: var(--nb-sage);
+  background: #e3eadf;
+  border-color: #c7d3c1;
+}
+.notebook-view .notebook-status.tone-blue {
+  color: var(--nb-blue);
+  background: #e4ebee;
+  border-color: #c4d1d8;
+}
+.notebook-view .notebook-status.tone-rust {
+  color: var(--nb-rust);
+  background: #f0e1d7;
+  border-color: #dfc7b8;
+}
+.notebook-view .notebook-empty {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 14px;
+  background: #fffefa70;
+  border: 1px dashed #bfc9c4;
+  border-radius: 5px;
+}
+.notebook-view .notebook-empty h3 {
+  font: 21px/1.2 var(--serif);
+  margin-bottom: 9px;
+}
+.notebook-view .notebook-empty p {
+  color: var(--nb-slate);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.notebook-view .empty-mark {
+  color: var(--chapter-accent);
+  font-size: 20px;
+  line-height: 1.2;
+}
+.notebook-view .empty-action {
+  margin-top: 16px;
+}
+.notebook-view .empty-reference {
+  background: #fffefa70;
+  border: 1px dashed #bdcbb9;
+  border-radius: 5px;
+  padding: 16px;
+}
+.notebook-view main .contact-select {
+  border-radius: 5px;
+  padding: 4px;
+  text-align: left;
+}
+.notebook-view .contact-entry {
+  border-radius: 5px;
+  transition: background 180ms ease-out;
+}
+.notebook-view .connected-canvas {
+  margin-top: 20px;
+  border-color: #cfc5b1;
+}
+.notebook-view .connected-canvas > summary {
+  color: var(--nb-sand);
+  font-weight: 550;
+}
+@media (hover: hover) {
+  .notebook-view main button:not(:disabled):hover {
+    transform: translateY(-1px);
+    background: #e2e8e4;
+    border-color: #98aba4;
+    box-shadow: 0 2px 5px #20374a0d;
+  }
+  .notebook-view main button.primary:not(:disabled):hover {
+    background: #314e60;
+    border-color: #314e60;
+  }
+  .notebook-view #decision button.primary:not(:disabled):hover {
+    background: #40594a;
+    border-color: #40594a;
+  }
+  .notebook-view main button.secondary:not(:disabled):hover {
+    background: #eae0c7;
+    border-color: #a79771;
+  }
+  .notebook-view main button.caution:not(:disabled):hover {
+    background: #efddd0;
+    border-color: var(--nb-rust);
+  }
+  .notebook-view main :is(.text-button, a):not(:disabled):hover {
+    background: transparent;
+    color: var(--ink);
+    text-decoration-color: currentColor;
+    transform: none;
+    box-shadow: none;
+  }
+  .notebook-view main :is(select, textarea, input):hover {
+    border-color: var(--nb-blue);
+  }
+  .notebook-view .chapter-links button:not(:disabled):hover,
+  .notebook-view .contact-entry:hover {
+    background: #fffefa90;
+  }
+  .notebook-view .disclosure > summary:hover {
+    background: #fffefa55;
+  }
+}
+@media (max-width: 480px) {
+  .notebook-view main {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .notebook-view .chapter-section {
+    margin-bottom: 22px;
+    padding: 20px 14px 22px;
+  }
+  .notebook-view .section-title {
+    gap: 9px;
+  }
+  .notebook-view .section-title h2 {
+    font-size: 24px;
+  }
+  .notebook-view .chapter-heading h1 {
+    font-size: 31px;
+  }
+  .notebook-view .notebook-review-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .notebook-view .notebook-review-actions .text-button {
+    justify-content: center;
+  }
+  .notebook-view .notebook-empty {
+    padding: 16px 12px;
+  }
+  .notebook-view .new-iteration {
+    padding: 12px;
+  }
+}
+@media (max-width: 260px) {
+  .notebook-view main {
+    padding-inline: 12px;
+  }
+  .notebook-view .chapter-section {
+    padding-inline: 10px;
+  }
+  .notebook-view .section-title {
+    flex-wrap: wrap;
+  }
+  .notebook-view .section-title h2 {
+    font-size: 21px;
+    flex-basis: 70%;
+  }
+  .notebook-view .notebook-empty {
+    display: block;
+  }
+  .notebook-view .empty-mark {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notebook-view *,
+  .notebook-view *::before,
+  .notebook-view *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .notebook-view main button:not(:disabled):hover {
+    transform: none;
+  }
+}
